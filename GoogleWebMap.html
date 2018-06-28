@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width">
+
+<title>My Google Map</title>
+    
+
+<link rel="stylesheet" type="text/css" href="styles.css">
+<style> #map { height: 540px; 
+               width: 99.6% }
+</style>
+</head>
+
+<body>
+    <h1><u>Nick's favorite spots to eat in Portland</u></h1>
+    <div id = "map">
+    </div>
+    
+    <script>
+
+ 
+        function initMap() 
+        {
+        var map = new google.maps.Map(document.getElementById('map'), 
+        {center: {lat: 45.519282, lng: -122.690831},
+         zoom: 11
+          });
+          // var marker = new google.maps.Marker({position: {lat: 45.519282, lng: -122.690831}, map: map});
+          // var infoWindow = new google.maps.infoWindow({
+          //   content: "<h1>Hello Christian</h1>"})
+
+          // marker.addEventListener('click', function(){
+          //   infoWindow.open(map, marker);
+          // });
+
+          // function to add markers with custom marker image support //
+          function addMarker(props){
+            var marker = new google.maps.Marker({position: props.coords, map: map, /*icon: props.markImage*/});
+            
+            if (props.markImage){
+              marker.setIcon(props.markImage);   
+            }
+
+            if (props.content) {
+              var infoWindow = new google.maps.InfoWindow({
+              content: props.content});
+              
+              marker.addListener('click', function(){
+              infoWindow.open(map, marker);
+              });
+
+              map.addListener('click', function(){
+              infoWindow.close();
+              })
+            }
+          }
+
+          // Loop through markers
+
+          var markers = 
+          [
+          {coords: {lat: 45.53597329999999, lng: -122.66412159999999},
+          markImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content: "<h1>Pine State Biscuits</h1><h4>125 NE Schuyler St, Portland, OR 97212</h4>"},
+
+          {coords: {lat: 45.5162892, lng: -122.75347799999997},
+          markImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content: "<h1>Sandovals Cafe & Cantina</h1><h4>460 SW Miller Rd, Portland, OR 97225</h4><p>Next door is also another great restaurant called Home Field Grill, highly Recommend both</p>"},
+
+          {coords: {lat: 45.5168971, lng: -122.67541649999998},
+          markImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content: "<h1>Luc Lac Vietnamese Kitchen</h1><h4>835 SW 2nd Ave, Portland, OR 97204</h4>"},
+
+          {coords: {lat: 45.5483793, lng: -122.61380450000001},
+          markImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content: "<h1>Pip's Original Doughnuts & Chai</h1><h4>4759 NE Fremont St, Portland, OR 97213</h4>"},
+
+          {coords: {lat: 45.5168971, lng: -122.68283380000003},
+          markImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content: "<h1>Bamboo Sushi | SW</h1><h4>404 SW 12th Ave, Portland, OR 97205</h4>"},
+
+          {coords: {lat: 45.5221871, lng: -122.67629119999998},
+          markImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content: "<h1>Portland City Grill</h1><h4>111 5th Ave, Portland, OR 97204</h4>"},
+
+          {coords: {lat: 45.5226869, lng: -122.64826959999999},
+          markImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content: "<h1>Fire on the Mountain Buffalo Wings | Burnside</h1><h4>111 5th Ave, Portland, OR 97204</h4>"},
+          ]
+        
+          for (i = 0; i < markers.length; i++) {
+          addMarker(markers[i])
+          }
+
+        }
+
+      </script>
+    
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVLqxp3L_vJsL2rnYxZB7QfoCuA9m72nk&callback=initMap"
+    async defer></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+body { 
+    background: bisque;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+h1 {
+    padding-top:10px
+}
+
+#map {
+    border: solid 2px grey;
+    margin: 0, auto
+    
+}
